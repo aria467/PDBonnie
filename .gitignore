@@ -42,3 +42,6 @@ s/
 .DS_Store
 Thumbs.db
 uv.lock
+
+# SHA256
+*.SHA256
