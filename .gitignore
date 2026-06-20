@@ -22,6 +22,7 @@ main.onefile-build/
 *.nuitka-cache/
 clcache/
 __nuitka__*.py
+nuitka-build.log
 
 # Structure files (downloaded by PDBonnie)
 *.cif
@@ -45,3 +46,6 @@ uv.lock
 
 # SHA256
 *.SHA256
+
+# compiled binary
+PDBonnie.exe
