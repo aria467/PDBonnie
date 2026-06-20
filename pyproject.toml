@@ -1,6 +1,6 @@
 [project]
 name = "PDBonnie"
-version = "1.0.0"
+version = "1.0.1"
 description = "PDBonnie: a simple PDB structures downloader for bioinformatics research."
 readme = "README.md"
 license = {text = "MIT"}
@@ -20,11 +20,8 @@ requires-python = ">=3.12"
 dependencies = [
     "biopython>=1.87",
     "click>=8.4.1",
-    "nuitka>=4.1.2",
-    "numpy>=2.4.6",
     "path>=17.1.1",
     "requests>=2.34.2",
-    "zstandard>=0.25.0",
 ]
 
 [project.urls]

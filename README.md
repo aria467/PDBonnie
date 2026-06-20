@@ -14,7 +14,7 @@
 | 格式 | 文件扩展名 | 说明 |
 |------|-----------|------|
 | `mmcif` (默认) | `.cif` | mmCIF 格式，PDB 现行标准 |
-| `pdb` | `.ent` | 传统 PDB 格式 |
+| `pdb` | `.pdb` | 传统 PDB 格式 |
 | `xml` | `.xml` | PDBML/XML 格式 |
 | `mmtf` | `.mmtf` | 压缩的二进制格式 |
 | `bundle` | `.tar.gz` | PDBx/mmCIF 打包文件 |
@@ -28,35 +28,28 @@
 
 ```bash
 # Windows
-.\PDBonnie.exe 3COM
+.\PDBonnie.exe 3com
 ```
 
 ```bash
 # macOS / Linux
-./PDBonnie 3COM
+./PDBonnie 3com
 ```
 
 ### 方式二：从源码运行
 
-**环境要求**：Python 3.12+
 
 ```bash
 # 1. 克隆仓库
 git clone https://github.com/aria467/PDBonnie.git
 cd PDBonnie
 
-# 2. 创建虚拟环境（推荐）
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
+# 2. 创建虚拟环境并安装依赖（推荐使用 uv）
+uv venv .venv
+uv pip install -r ./pyproject.toml
 
-# 3. 安装依赖
-pip install biopython click path requests
-
-# 4. 运行
-python main.py 3COM
+# 3. 运行
+uv run main.py 3com
 ```
 
 
@@ -68,11 +61,12 @@ python main.py 3COM
   PDBonnie: a simple PDB structures downloader for bioinformatics research.
 
 参数:
-  PDB_ID              PDB ID，4 位字母数字组合（如 3COM）
+  PDB_ID              PDB ID，一个或多个 4 位字母数字组合（如 3COM）
 
 选项:
   -f, --format TEXT   下载格式 (mmcif, pdb, xml, mmtf, bundle)，默认 mmcif
-  -o, --output TEXT   保存路径，默认当前目录
+  -p, --path TEXT     选择保存到哪个文件夹
+  -t --threads INT    同时进行几个下载任务，默认 1
   --obsolete          允许下载已废弃的结构
   --help              显示帮助信息
 ```
@@ -82,12 +76,14 @@ python main.py 3COM
 ```bash
 # 下载默认 mmCIF 格式
 PDBonnie 3COM
+# 或者
+PDBonnie 3com -f mmcif # 不区分大小写
 
 # 下载传统 PDB 格式
 PDBonnie 3COM -f pdb
 
 # 下载到指定目录
-PDBonnie 3COM -o ./structures
+PDBonnie 3COM -o structures
 
 # 下载 XML 格式
 PDBonnie 1BNA -f xml
@@ -97,14 +93,18 @@ PDBonnie 4HHB -f mmtf
 
 # 下载已废弃的结构
 PDBonnie 1OLD --obsolete
+
+# 并行下载
+PDBonnie 3COM 4HHB 1BNA -t 3
 ```
 
 ### 输出示例
 
 ```
-Downloading PDB structure '3com'...
-Download completed in 1.28 s.
-Structure saved in D:\PDBonnie\3com.cif
+[1/1] ✓ 3COM → 3com.cif
+
+Download directory: /Users/aria/Dev/PDBonnie
+1/1 structures downloaded in 1.13 s.
 ```
 
 
@@ -113,7 +113,7 @@ Structure saved in D:\PDBonnie\3com.cif
 如需自行编译为独立可执行文件，请使用 [Nuitka](https://nuitka.net/)：
 
 ```bash
-pip install nuitka zstandard
+uv pip install nuitka zstandard
 
 python -m nuitka --onefile \
     --assume-yes-for-downloads \
