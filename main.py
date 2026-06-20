@@ -88,7 +88,7 @@ def main(pdb_ids: tuple[str, ...], format: str, path: str, obsolete: bool, threa
                 # rename
                 new_path = file_path.parent.joinpath(f'{pid.lower()}{file_path.suffix}')
                 if new_path.suffix == '.ent':
-                    new_path = Path(path).absolute().joinpath(f'{pid.upper()}.pdb')
+                    new_path = Path(path).absolute().joinpath(f'{pid.lower()}.pdb')
                 os.rename(file_path, new_path)
 
                 completed += 1
