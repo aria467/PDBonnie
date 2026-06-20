@@ -13,8 +13,8 @@
 
 | 格式 | 文件扩展名 | 说明 |
 |------|-----------|------|
-| `mmcif` (默认) | `.cif` | mmCIF 格式，PDB 现行标准 |
-| `pdb` | `.pdb` | 传统 PDB 格式 |
+| `mmcif` (默认) | `.cif` | mmCIF 格式 |
+| `pdb` | `.pdb` | PDB 格式 |
 | `xml` | `.xml` | PDBML/XML 格式 |
 | `mmtf` | `.mmtf` | 压缩的二进制格式 |
 | `bundle` | `.tar.gz` | PDBx/mmCIF 打包文件 |
@@ -22,7 +22,7 @@
 
 ## ⚡ 快速开始
 
-### 方式一：使用预编译二进制文件（推荐）
+### 方式一：使用预编译二进制文件
 
 从 [Releases](../../releases) 页面下载对应平台的 `PDBonnie` 可执行文件，即可直接运行：
 
