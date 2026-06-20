@@ -112,20 +112,42 @@ Download directory: /Users/aria/Dev/PDBonnie
 
 如需自行编译为独立可执行文件，请使用 [Nuitka](https://nuitka.net/)：
 
-```bash
-uv pip install nuitka zstandard
+Windows编译指令参考（压缩率最大化）
 
+```bash
+uv run python -m nuitka `
+    --onefile `
+    --assume-yes-for-downloads `
+    --lto=yes `
+    --output-filename=PDBonnie `
+    --noinclude-pytest-mode=nofollow `
+    --noinclude-setuptools-mode=nofollow `
+    --noinclude-unittest-mode=nofollow `
+    --noinclude-IPython-mode=nofollow `
+    --noinclude-dask-mode=nofollow `
+    --noinclude-numba-mode=nofollow `
+    --noinclude-pydoc-mode=nofollow `
+    --noinclude-default-mode=nofollow `
+    --nofollow-import-to=pytest,setuptools,unittest,tkinter,matplotlib,scipy,pandas,PIL,reportlab,Crypto,cryptography `
+    --remove-output `
+    main.py
+```
+*nix编译指令参考（压缩率最大化）
+
+```bash
 python -m nuitka --onefile \
     --assume-yes-for-downloads \
-    --lto=auto \
+    --lto=yes \
     --output-filename=PDBonnie \
     --noinclude-pytest-mode=nofollow \
     --noinclude-setuptools-mode=nofollow \
     --noinclude-unittest-mode=nofollow \
     --noinclude-IPython-mode=nofollow \
+    --noinclude-dask-mode=nofollow \
+    --noinclude-numba-mode=nofollow \
+    --nofollow-import-to=pytest,setuptools,unittest,tkinter,matplotlib,scipy,pandas,PIL,reportlab,Crypto,cryptography \
     main.py
 ```
-
 
 ## 🛠️ 技术栈
 
