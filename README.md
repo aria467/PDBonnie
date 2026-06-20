@@ -117,8 +117,12 @@ uv pip install nuitka zstandard
 
 python -m nuitka --onefile \
     --assume-yes-for-downloads \
-    --lto=no \
+    --lto=auto \
     --output-filename=PDBonnie \
+    --noinclude-pytest-mode=nofollow \
+    --noinclude-setuptools-mode=nofollow \
+    --noinclude-unittest-mode=nofollow \
+    --noinclude-IPython-mode=nofollow \
     main.py
 ```
 
