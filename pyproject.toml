@@ -1,0 +1,33 @@
+[project]
+name = "PDBonnie"
+version = "1.0.0"
+description = "PDBonnie: a simple PDB structures downloader for bioinformatics research."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "aria467"},
+]
+keywords = ["pdb", "bioinformatics", "structure", "rcsb", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "biopython>=1.87",
+    "click>=8.4.1",
+    "nuitka>=4.1.2",
+    "numpy>=2.4.6",
+    "path>=17.1.1",
+    "requests>=2.34.2",
+    "zstandard>=0.25.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/aria467/PDBonnie"
+Repository = "https://github.com/aria467/PDBonnie"
+Issues = "https://github.com/aria467/PDBonnie/issues"

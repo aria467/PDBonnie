@@ -1,0 +1,39 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Nuitka build artifacts
+main.build/
+main.dist/
+main.onefile-build/
+*.nuitka-cache/
+clcache/
+__nuitka__*.py
+
+# Structure files (downloaded by PDBonnie)
+*.cif
+*.ent
+*.xml
+*.mmtf
+*.tar.gz
+pdb*/
+structures/
+structure/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
